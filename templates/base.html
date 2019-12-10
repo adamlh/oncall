@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<title>Rota</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+    background: #0F2027;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+background: url('https://images.pexels.com/photos/716658/pexels-photo-716658.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+.w3-display-middle {
+   background-color: rgba(00, 00, 00, 0.8); 
+  /* opacity: 0.4; */
+  border-radius: 25px;
+  padding: 15px;
+}
+
+.oncall {
+  opacity: 1.0;
+}
+
+.h3 {
+  background-color: #FFDC00;
+}
+</style>
+<body>
+
+  <ul>
+    <li><a href="/">IT Rota</a></li>
+    <li><a href="/eng/">Engineering</a></li>
+    <li><a href="/lab/">Laboratory</a></li>
+    <li style="float:right"><a class="active" href="/admin/">Admin</a></li>
+
+  </ul>
+
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <div class="w3-display-topleft w3-padding-large w3-xlarge">
+    
+  </div>
+  {% block content %}
+
+  {% endblock %}
+  <div class="w3-display-bottomleft w3-padding-large">
+    {% if request.user.username %}
+    <a href="/admin/" target="_blank">Dashboard</a>
+    {% else %}
+    <a href="/admin/" target="_blank">Login</a>
+    {% endif %}
+    {% if request.user.username %}
+    <h7 style="color: white;"> Logged In as: {{ request.user.username }}</h7>
+    <a href="/admin/logout/">Logout</a>
+    {% endif %}
+
+  </div>
+
+</div>
+
+</body>
+</html>

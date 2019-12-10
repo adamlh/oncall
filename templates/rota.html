@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>Rota View</title>
+
+<div class="w3-display-topleft w3-padding-large w3-xlarge w3-animate-top">
+        IT Rota
+    </div>
+<div class="w3-display-middle">
+        <h1 class="w3-jumbo w3-animate-top"></h1>
+            <div id="oncall" class="w3-center">
+                    <p class="w3-center">On Call Times</p>
+            {% for item in dates %}
+                <h3>{{item.startdate}} - {{item.enddate}} </h3>
+                <h4>{{item.employee}}</h4>
+                <p>{{item.employee.mobile}}</p>
+                <p>{{item.employee.email}}</p>
+                <hr class="w3-border-grey" style="margin:auto;width:40%">
+            {% endfor %}
+
+        <hr class="w3-border-grey" style="margin:auto;width:40%">
+
+        <hr class="w3-border-grey" style="margin:auto;width:40%">
+
+            </div>
+</div>
+
+
+{% endblock %}
