@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Members, MembersAdmin, DateActive
+from .models import Members, MembersAdmin, DateActive, SiteLocation
 # Register your models here.
 
 admin.site.site_header = "Felinfach On-Call Rota"
@@ -16,13 +16,16 @@ change_status_inactive.short_description = 'Change Date - Inactive'
 def DayCount(obj):
     days = obj.startdate - obj.enddate
     return days 
+
+class SiteLocationAdmin(admin.ModelAdmin):
+    list_display = ('name','phone')
 class DateActiveadmin(admin.ModelAdmin):
 
     fieldsets = [
-        ('Rota Schedule',{'fields':['isactive','startdate','enddate','employee',]}),
+        ('Rota Schedule',{'fields':['isactive','startdate','enddate','employee','deskphone',]}),
 
     ]
-    list_display = ('startdate','enddate','employee','isactive', DayCount)
+    list_display = ('startdate','enddate','employee','deskphone', DayCount)
     #list_editable = ('isactive',)
     list_filter = ('startdate','enddate','employee','isactive')
     ordering = ('startdate',)
@@ -33,4 +36,5 @@ class DateActiveadmin(admin.ModelAdmin):
 
 admin.site.register(Members,MembersAdmin)
 admin.site.register(DateActive, DateActiveadmin)
+admin.site.register(SiteLocation,SiteLocationAdmin)
 

@@ -11,6 +11,13 @@ from django.core.validators import ValidationError
 #        raise ValidationError('%(phone)s must be 11 digits', params={'phone': phone},)
     #validators=[validate_digit_length])
 
+class SiteLocation(models.Model):
+    name = models.CharField(max_length=100)
+    phone = models.CharField(verbose_name="Phone Number", max_length=13)
+    def __str__(self):
+        return self.name
+
+
 class Members(models.Model):
     firstname = models.CharField(max_length=250)
     surname   = models.CharField(max_length=250)
@@ -37,6 +44,7 @@ class DateActive(models.Model):
     startdate = models.DateTimeField(max_length=250,default=default_start_time)
     enddate   = models.DateTimeField(max_length=250,default=default_end_time)
     employee  = models.ForeignKey(Members, on_delete=models.CASCADE)
+    deskphone = models.ForeignKey(SiteLocation, on_delete=models.CASCADE, blank=True, default=1)
     objects = models.Manager()
     showactive = DateActiveManager()
     class Meta:
