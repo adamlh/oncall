@@ -25,6 +25,14 @@
         <hr class="w3-border-grey" style="margin:auto;width:40%">
 
             </div>
+            All Contact Details
+            {% for member in members %}
+                <h4>{{member.firstname}} {{member.surname}}</h4><h3>{{member.mobile}}</h3>
+                
+               
+                {{member.email}}
+                <hr>
+            {% endfor %}
 </div>
 
 

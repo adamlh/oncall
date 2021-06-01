@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'rota.apps.RotaConfig',
     'engineering',
     'laboratory',
+    'spm',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -121,8 +122,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_ROOT = 'C:/oncall/oncall/static/static_server'
-STATICFILES_DIRS = ( 'C:/oncall/oncall/static/static_local', )
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+#STATICFILES_DIRS = ( 'C:/oncall/oncall/static/static_local', )
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static/static_local/'),
+)
 STATIC_URL = '/static/'
 
 
+
+
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = str(os.path.join('sent_emails'))
+
+LOGIN_REDIRECT_URL = '/'

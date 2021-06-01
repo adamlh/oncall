@@ -14,15 +14,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.conf.urls import url,include
+from django.urls import path,include
 from django.conf.urls.static import static
-from rota.views import  RotaView
+from rota.views import  RotaView, RotaTotalView, search
 from engineering.views import EngView
 from laboratory.views import LabView
+from spm.views import SpmView
+
+
+
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^eng/', EngView.as_view(), name='EngView'),
-    url(r'^lab/', LabView.as_view(), name='LabView'),
-    url(r'', RotaView.as_view(), name='RotaView')
+    path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('total/', RotaTotalView.as_view(), name='RotaTotalView'),
+    path('eng/', EngView.as_view(), name='EngView'),
+    path('lab/', LabView.as_view(), name='LabView'),
+    path('spm/', SpmView.as_view(), name='SpmView'),
+    path('', RotaView.as_view(), name='RotaView'),
+    path('search/$', search, name='search'),
+  
 ]

@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.admin import ModelAdmin, SimpleListFilter
 from .models import Members, MembersAdmin, DateActive
 # Register your models here.
 
@@ -17,8 +18,12 @@ def change_status_inactive(modeladmin, request, queryset):
 change_status_inactive.short_description = 'Change Date - Inactive'
 
 def DayCount(obj):
-    days = obj.startdate - obj.enddate
-    return days 
+    days = obj.enddate - obj.startdate
+    return days
+
+    
+
+
 class DateActiveadmin(admin.ModelAdmin):
 
     fieldsets = [
@@ -28,10 +33,15 @@ class DateActiveadmin(admin.ModelAdmin):
     list_display = ('startdate','enddate','employee','isactive', DayCount)
     #list_editable = ('isactive',)
     list_filter = ('startdate','enddate','employee','isactive')
-    ordering = ('startdate',)
+    ordering = ('-startdate',)
     actions = [change_status_active,change_status_inactive,]
 
+    def count_days(modeladmin, request, querset):
+        today = datetime.date.today()
+        first = today.replace(day=1)
+        lastmonth = first - datetime.timedelta(days=1)
 
+        DateActive.objects.filter(startdate=lastmonth)
 
 
 admin.site.register(Members,MembersAdmin)

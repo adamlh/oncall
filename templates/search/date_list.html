@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+  
+
+  {% for date in filter.qs %}
+    <li>{{ date.startdate }} - {{ date.enddate}}</li>
+	<br>
+  {% endfor %}
+  </ul>
+{% endblock %}

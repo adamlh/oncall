@@ -12,7 +12,8 @@ class EngView(TemplateView):
     def get(self, request):
         now = timezone.now()
         dates = DateActive.objects.filter(startdate__lte=now, enddate__gte=now)
-        args = {'dates': dates, 'name': DateActive.employee}
+        members = Members.objects.all()
+        args = {'dates': dates, 'name': DateActive.employee,'members':members}
         return render(request, self.template_name, args)
 
 # Create your views here.

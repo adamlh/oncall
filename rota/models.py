@@ -34,6 +34,9 @@ class DateActive(models.Model):
         now = datetime.now()
         end = now.replace(hour=6, minute=59, second=59, microsecond=0)
         return end if end > now else end + timedelta(days=1)
+    def DayCount(self):
+        days = self.enddate - self.startdate
+        return days
     isactive  = models.BooleanField(default=1)
     startdate = models.DateTimeField(max_length=250,default=default_start_time)
     enddate   = models.DateTimeField(max_length=250,default=default_end_time)

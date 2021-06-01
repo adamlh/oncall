@@ -13,7 +13,7 @@ body, html {height: 100%}
 background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-background: url('https://images.pexels.com/photos/716658/pexels-photo-716658.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+/*background: url('https://images.pexels.com/photos/716658/pexels-photo-716658.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); */
 
   min-height: 100%;
   background-position: center;
@@ -69,8 +69,18 @@ li a:hover {
     <li><a href="/">IT Rota</a></li>
     <li><a href="/eng/">Engineering</a></li>
     <li><a href="/lab/">Laboratory</a></li>
-    <li style="float:right"><a class="active" href="/admin/">Admin</a></li>
+    <li><a href="/spm/">Shift Production Managers</a></li>
 
+	<li style="color:yellow" style="float:right"  class="white user_status">
+	{% if user.is_authenticated %}
+        <p>Logged in: {{ user.username }} </p>       
+		<li style="float:right"><a class="active" href="/admin/">Admin</a></li>
+		<li style="float:right"><a href="/total/">BS Total</a></li>
+		<li style="float:right"><a class="active" href="/accounts/logout/">Logout</a></li>
+	{% else %}
+		<li style="float:right"><a class="active" href="/accounts/login/">Login</a></li>
+		<li style="float:right"><a class="active" href="/accounts/password_reset/">Reset PW</a></li>
+    {% endif %}</li>
   </ul>
 
 
