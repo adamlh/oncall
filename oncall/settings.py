@@ -19,19 +19,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = 'mvew!#odlxwy#710*_*%chzt_g#pc!!!08(dr+7c^g3)7i75x-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 #ALLOWED_HOSTS = ['localhost', '127.0.0.1', '10.11.11.33', 'FEL1942013', 'lactosecontrol','felfoodstores2','fela3pack2','fela3pack','felrspacking','rscontrol','FE-5823MH2-L']
 
-ALLOWED_HOSTS = ['*.volac.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django_filters',
     'rota.apps.RotaConfig',
     'engineering',
     'laboratory',

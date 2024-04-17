@@ -1,2 +1,2 @@
 CALL "C:\oncall\oncall\venv-oncall\Scripts\activate.bat"
-python manage.py runserver 10.11.0.5:80
+python manage.py runserver 127.0.0.1

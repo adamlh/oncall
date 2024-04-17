@@ -23,12 +23,12 @@ class RotaView(TemplateView):
             startdate__month = now.month - 1,
             enddate__month = (now.month  - 1)
         )
+
         stefftotaldays = DateActive.objects.filter(
             employee=2,).filter(
             startdate__month = now.month - 1,
             enddate__month = (now.month  - 1)
         )
-
 
         kaltotaldays = DateActive.objects.filter(
             employee=4,).filter(
@@ -47,9 +47,7 @@ class RotaTotalView(TemplateView):
         first = today.replace(day=1)
         firstDayOfLastMonth = today.replace(day=1, month=today.month-1)
         lastDayOfLastMonth = first - timedelta(days=1)
-        previous_month = str(firstDayOfLastMonth) + " " + str(lastDayOfLastMonth) #str(lastDayOfLastMonth.month)
-        #previous_month = date.today().replace(day=timedelta(days=1), month=10)
-        #start_prev_month = previous_month.replace(day=1)
+        previous_month = str(firstDayOfLastMonth) + " " + str(lastDayOfLastMonth) 
         now = date.today()
         query = DateActive.objects.all().date_range=['2020','11','01',]
 

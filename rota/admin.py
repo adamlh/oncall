@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin, SimpleListFilter
 from .models import Members, MembersAdmin, DateActive
+from datetime import datetime
 # Register your models here.
 
-admin.site.site_header = "Felinfach On-Call Rota"
-admin.site.site_title =  "Felinfach On-Call Rota"
-admin.site.index_title = "Felinfach On-Call Rota"
+admin.site.site_header = "On-Call Rota"
+admin.site.site_title =  "On-Call Rota"
+admin.site.index_title = "On-Call Rota"
 
 
 

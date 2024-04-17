@@ -1,2 +1,2 @@
 CALL "C:\oncall\oncall\venv-oncall\Scripts\activate.bat"
-python manage.py runserver FELVOLRDS001:80 --insecure
+python manage.py runserver 127.0.0.1:80 --insecure
